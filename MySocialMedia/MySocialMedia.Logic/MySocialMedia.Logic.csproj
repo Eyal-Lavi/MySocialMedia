@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MySocialMedia.Common\MySocialMedia.Common.csproj" />
+  </ItemGroup>
+
 </Project>
