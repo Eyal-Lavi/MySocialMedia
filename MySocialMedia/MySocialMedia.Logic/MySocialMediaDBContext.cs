@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MySocialMedia.Logic.Services
+namespace MySocialMedia.Logic
 {
     public class MySocialMediaDBContext : DbContext
     {

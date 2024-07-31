@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MySocialMedia.Common.Helpers;
 using MySocialMedia.Logic.Services;
 
 namespace MySocialMedia.API
@@ -14,13 +15,15 @@ namespace MySocialMedia.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
             services.AddDbContext<MySocialMediaDBContext>(option =>
             {
                 option.UseMySql(Configuration.GetConnectionString("defaultconnection"), new MySqlServerVersion(new Version(8, 0, 37)));
             });
+
+            services.AddControllers();
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+            services.AddAutoMapper(typeof(AutoMapperProfiles));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -32,7 +35,7 @@ namespace MySocialMedia.API
             }
 
             app.UseHttpsRedirection();
-
+            
             app.UseRouting();
 
             app.UseAuthorization();
