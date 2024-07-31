@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MySocialMedia.Common.Helpers;
+using MySocialMedia.Logic;
 using MySocialMedia.Logic.Services;
 
 namespace MySocialMedia.API
@@ -24,6 +25,7 @@ namespace MySocialMedia.API
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddAutoMapper(typeof(AutoMapperProfiles));
+            services.AddScoped<IUserService, UserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
