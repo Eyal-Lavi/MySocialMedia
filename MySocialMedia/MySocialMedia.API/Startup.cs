@@ -17,6 +17,10 @@ namespace MySocialMedia.API
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddDbContext<MySocialMediaDBContext>(option =>
+            {
+                option.UseMySql(Configuration.GetConnectionString("defaultconnection"), new MySqlServerVersion(new Version(8, 0, 37)));
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
