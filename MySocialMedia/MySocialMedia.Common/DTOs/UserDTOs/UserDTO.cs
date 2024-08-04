@@ -10,13 +10,13 @@ namespace MySocialMedia.Common.DTOs.UserDTOs
 {
     public class UserDTO// משתמש להעברת נתונים
     {
-        public int ID { get; set; }
-        public string? FIRST_NAME { get; set; }
-        public string? LAST_NAME { get; set; }
-        public string? USER_NAME { get; set; }
-        public string? PASSWORD { get; set; }
-        public DateTime DATE_CREATE { get; set; }
-        public virtual ICollection<User_messages>? send_user_messages { get; set; }
-        public virtual ICollection<User_messages>? receive_user_messages { get; set; }
+        public int Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? UserName { get; set; }
+        public string? Password { get; set; }
+        public DateTime DateCreate { get; set; }
+        public virtual ICollection<UserMessage>? SendUserMessages { get; set; }
+        public virtual ICollection<UserMessage>? ReceiveUserMessages { get; set; }
     }
 }

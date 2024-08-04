@@ -15,7 +15,7 @@ namespace MySocialMedia.Logic
         }
 
         public DbSet<User> users { get; set; }
-        public DbSet<User_messages> user_messages { get; set; }
+        public DbSet<UserMessage> user_messages { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -23,7 +23,7 @@ namespace MySocialMedia.Logic
             modelBuilder.Entity<User>()
                 .HasKey(x => x.ID);//מעדכן אותו שידע שזה ה key 
 
-            modelBuilder.Entity<User_messages>()
+            modelBuilder.Entity<UserMessage>()
                .HasKey(x => x.ID);//מעדכן אותו שידע שזה ה key 
 
             // הגדרת קשר אחד-לרבים בין טבלת Users לטבלת User_messages דרך שדה SENDER_USER_ID
