@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MySocialMedia.Common.Helpers;
 using MySocialMedia.Logic;
+using MySocialMedia.Logic.Extensions;
 using MySocialMedia.Logic.Services;
 
 namespace MySocialMedia.API
@@ -26,6 +27,10 @@ namespace MySocialMedia.API
             services.AddSwaggerGen();
             services.AddAutoMapper(typeof(AutoMapperProfiles));
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMessageService, MessageService>();
+
+            services.AddJwtAuthenticaion(Configuration);
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,6 +45,8 @@ namespace MySocialMedia.API
             
             app.UseRouting();
 
+            app.UseAuthentication(); // הוספת אימות
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => 
