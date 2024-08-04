@@ -10,8 +10,4 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTOs\MessageDTOs\" />
-  </ItemGroup>
-
 </Project>
