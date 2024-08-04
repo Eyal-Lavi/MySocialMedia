@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MySocialMedia.Common.DBTables;
 using MySocialMedia.Common.DTOs.UserDTOs;
+using MySocialMedia.Common.DTOs.utlisDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +15,19 @@ namespace MySocialMedia.Logic.Services
     {
         private readonly MySocialMediaDBContext _context;
         private readonly IMapper _mapper;
+        private readonly ITokenService _tokenService;
+        private readonly IMessageService _messageService;
 
-        public UserService(MySocialMediaDBContext context , IMapper mapper)
+        public UserService(MySocialMediaDBContext context , IMapper mapper , ITokenService tokenService ,IMessageService messageService)
         {
-            this._context = context;
-            this._mapper = mapper;
-        }
-        public async Task<User?> GetUserByCredentials(string username , string password)
-        {
-            return await _context.users.FirstOrDefaultAsync(x => x.USER_NAME == username && x.PASSWORD == password);
+            _context = context;
+            _mapper = mapper;
+            _tokenService = tokenService;
+            _messageService = messageService;
         }
         public async Task<bool> UserRegister(UserCreationDTO userCreationDTO)
         {
-            var userExists = await UserExists(userCreationDTO);
+            var userExists = await UserExists(userCreationDTO.UserName);
 
             if (userExists)
             {
@@ -37,17 +38,32 @@ namespace MySocialMedia.Logic.Services
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> UserExists(UserCreationDTO userCreationDTO)
+        public async Task<LoginResponseDTO> UserLogin(UserLoginDTO userLoginDTO)
         {
-            var exists = await _context.users.AnyAsync(x => x.USER_NAME == userCreationDTO.UserName);
-
+            var user = await GetUser(userLoginDTO.UserName , userLoginDTO.Password);
+            
+            if (user != null)
+            {
+                var loginResponse = new LoginResponseDTO
+                {
+                    UserId = user.Id,
+                    AuthToken = _tokenService.GenerateToken(userLoginDTO.UserName),
+                    Chats = await _messageService.GetChatsSummary(userLoginDTO.UserName),
+                };
+                return loginResponse;
+            }
+            return null;
+        }
+        public async Task<bool> UserExists(string username)
+        {
+            var exists = await _context.users.AnyAsync(x => x.USER_NAME == username);
             return exists;
         }
-        public async Task<bool> UserLogin(UserLoginDTO userLoginDTO)
+        public async Task<UserDTO> GetUser(string username , string password)
         {
-            var exists = await _context.users.AnyAsync(x => x.USER_NAME == userLoginDTO.UserName && x.PASSWORD == userLoginDTO.Password);
-
-            return exists;
+            var result = await _context.users.FirstOrDefaultAsync(x => x.USER_NAME == username && x.PASSWORD == password);
+            var user = _mapper.Map<UserDTO>(result);
+            return user;
         }
     }
 }
