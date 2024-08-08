@@ -23,11 +23,13 @@ namespace MySocialMedia.API.Controllers
         {
             var usernameClaim = User.Claims.FirstOrDefault(x => x.Type == "username");
             var username = usernameClaim?.Value;
-            Console.WriteLine(username);
 
+
+            userMessageCreationDTO.MessageDate = DateTime.Now;
             await _messageService.SendMessage(userMessageCreationDTO);
 
-            return Ok(true);
+            Console.WriteLine($"{username} Send message !");
+            return Ok();
         }
         [HttpGet("allMessages")]
         public async Task<ActionResult> GetAllChatWith([FromQuery] string targetUser)

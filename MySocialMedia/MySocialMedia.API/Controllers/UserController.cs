@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MySocialMedia.Common.DTOs.UserDTOs;
+using MySocialMedia.Common.DTOs.utlisDTOs;
 using MySocialMedia.Logic;
 using MySocialMedia.Logic.Services;
 
@@ -25,7 +26,9 @@ namespace MySocialMedia.API.Controllers
         [Route("register")]
         public async Task<ActionResult> Register([FromBody] UserCreationDTO userCreationDTO)
         {
+            userCreationDTO.DateCreate = DateTime.Now;
             var result = await _userService.UserRegister(userCreationDTO);
+
             if (!result)
             {
                 return BadRequest("Username already exists");//400
@@ -35,7 +38,7 @@ namespace MySocialMedia.API.Controllers
         }
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<bool>> Login([FromBody] UserLoginDTO userLoginDTO)
+        public async Task<ActionResult<LoginResponseDTO>> Login([FromBody] UserLoginDTO userLoginDTO)
         {
             var userResponse = await _userService.UserLogin(userLoginDTO);
 
@@ -43,7 +46,7 @@ namespace MySocialMedia.API.Controllers
             {
                 return NotFound();
             }
-            return Ok(userResponse);//200
+           return userResponse;
         }
     }
 }
