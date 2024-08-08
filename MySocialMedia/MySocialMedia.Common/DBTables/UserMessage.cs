@@ -13,9 +13,14 @@ namespace MySocialMedia.Common.DBTables
     public class UserMessage
     {
         public int ID { get; set; } // מזהה ייחודי של ההודעה
+        [Required]
         public int SENDER_USER_ID { get; set; } // מזהה המשתמש ששלח את ההודעה
+        [Required]
         public int RECEIVER_USER_ID { get; set; } // מזהה המשתמש שקיבל את ההודעה
+        [Required]
+        [StringLength(maximumLength:1000,MinimumLength = 1)]
         public string? MESSAGE_DATA { get; set; } // תוכן ההודעה
+        [Required]
         public DateTime MESSAGE_DATE { get; set; } // תאריך שליחת ההודעה
         [JsonIgnore]
         public virtual User? send_user { get; set; } // משתמש ששלח את ההודעה

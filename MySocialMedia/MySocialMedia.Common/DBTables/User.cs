@@ -22,7 +22,7 @@ namespace MySocialMedia.Common.DBTables
         [StringLength(16,MinimumLength = 2)]
         public string? USER_NAME { get; set; } // שם משתמש
         [Required]
-        [StringLength(16)]
+        [StringLength(16, MinimumLength=8)]
         [OneCharacterIsBigLetter]
         [OneCharacterIsSmallLetter]
         public string? PASSWORD { get; set; } // סיסמה

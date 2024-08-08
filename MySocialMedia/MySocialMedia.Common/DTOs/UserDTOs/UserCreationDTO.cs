@@ -23,7 +23,6 @@ namespace MySocialMedia.Common.DTOs.UserDTOs
         [OneCharacterIsBigLetter]
         [OneCharacterIsSmallLetter]
         public string? Password { get; set; }
-        [Required]
         public DateTime DateCreate { get; set; }
     }
 }
