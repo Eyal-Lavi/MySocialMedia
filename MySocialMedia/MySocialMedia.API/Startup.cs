@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.WebSockets;
+using Microsoft.EntityFrameworkCore;
+using MySocialMedia.API.Middlwares;
+using MySocialMedia.Common.DBTables;
 using MySocialMedia.Common.Helpers;
 using MySocialMedia.Logic;
 using MySocialMedia.Logic.Extensions;
@@ -19,7 +22,7 @@ namespace MySocialMedia.API
         {
             services.AddDbContext<MySocialMediaDBContext>(option =>
             {
-                option.UseMySql(Configuration.GetConnectionString("defaultconnection"), new MySqlServerVersion(new Version(8, 0, 37)));
+                option.UseMySql(Properties.Resources.StringConnectionDB, new MySqlServerVersion(new Version(8, 0, 37)));
             });
 
             services.AddControllers();
@@ -28,9 +31,11 @@ namespace MySocialMedia.API
             services.AddAutoMapper(typeof(AutoMapperProfiles));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMessageService, MessageService>();
-
             services.AddJwtAuthenticaion(Configuration);
-
+            services.AddWebSockets(options =>
+            {
+                options.KeepAliveInterval = TimeSpan.FromSeconds(120); // שמירת פתיחה  כל 120
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -48,6 +53,10 @@ namespace MySocialMedia.API
             app.UseAuthentication(); // הוספת אימות
             
             app.UseAuthorization();
+
+            app.UseWebSockets();
+
+            app.UseMiddleware<WebSocketMiddlewareInjector>();
 
             app.UseEndpoints(endpoints => 
             {

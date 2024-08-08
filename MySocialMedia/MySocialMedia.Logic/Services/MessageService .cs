@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
+using MySocialMedia.API.Middlwares;
 using MySocialMedia.Common.DBTables;
 using MySocialMedia.Common.DBTables.MessageDTOs;
 using MySocialMedia.Common.DTOs.utlisDTOs;
@@ -7,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 namespace MySocialMedia.Logic.Services
 {
@@ -14,7 +17,6 @@ namespace MySocialMedia.Logic.Services
     {
         private readonly MySocialMediaDBContext _context;
         private readonly IMapper _mapper;
-
         public MessageService(MySocialMediaDBContext context, IMapper mapper)
         {
             this._context = context;
@@ -39,6 +41,13 @@ namespace MySocialMedia.Logic.Services
             var message = _mapper.Map<UserMessage>(userMessageCreationDTO);
             _context.user_messages.Add(message);
             await _context.SaveChangesAsync();
+
+            var reciverdUser = _context.users.FirstOrDefault(x => x.ID == userMessageCreationDTO.ReceiverUserId);
+            var messageToSend = _mapper.Map<UserMessageDTO>(message);
+            var json = JsonSerializer.Serialize(messageToSend);
+
+            await MyWebSocketMiddleware.SendMessageAsyncWithSocket(reciverdUser.USER_NAME , json);
+
         }
         public async Task<List<ChatSummaryDTO>> GetChatsSummary(string currentUser)
         {
