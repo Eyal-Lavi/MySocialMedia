@@ -4,6 +4,7 @@ namespace MySocialMedia.API
 {
     public class Program
     {
+        private const string URL = "httpS://localhost:7121";
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -14,6 +15,7 @@ namespace MySocialMedia.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls(URL);
                 });
     }
 }
