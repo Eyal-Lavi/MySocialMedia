@@ -5,8 +5,212 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MySocialMedia.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Welcome" Height="760" Width="450"
+        WindowStartupLocation="CenterScreen" Background="{x:Null}" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True"
+        MouseDown="MainWindow_MouseDown">
+    <Window.Resources>
+        <!-- Color Resources -->
+        <Color x:Key="MainBackgroundColor">#FF8DECB4</Color>
+        <Color x:Key="LightColor">#FFFFF5E0</Color>
+        <Color x:Key="DarkColor">#FF141E46</Color>
 
+        <!-- Brush Resources -->
+        <SolidColorBrush x:Key="MainBackgroundBrush" Color="{StaticResource MainBackgroundColor}"/>
+        <SolidColorBrush x:Key="LightBrush" Color="{StaticResource LightColor}"/>
+        <SolidColorBrush x:Key="DarkBrush" Color="{StaticResource DarkColor}"/>
+
+        <Style TargetType="TextBox" x:Key="RoundedTextBoxStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="1" 
+                                CornerRadius="2">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Rectangle HorizontalAlignment="Center" Height="760" Stroke="Black" VerticalAlignment="Center" Width="450" Fill="{StaticResource MainBackgroundBrush}" RadiusX="10.167" RadiusY="10.167"/>
+        <Grid x:Name="Logo" HorizontalAlignment="Center" VerticalAlignment="Top" Width="140" Margin="0,58,0,0">
+            <Rectangle HorizontalAlignment="Left" Height="41" Margin="10,0,0,0" Fill="{StaticResource LightBrush}" VerticalAlignment="Top" Width="10" RadiusX="4" RadiusY="4"/>
+            <Rectangle HorizontalAlignment="Left" Height="31" Margin="22,6,0,0" Fill="{StaticResource LightBrush}" VerticalAlignment="Top" Width="8" RadiusX="4" RadiusY="4"/>
+            <Rectangle HorizontalAlignment="Left" Height="31" Margin="0,6,0,0" Fill="{StaticResource LightBrush}" VerticalAlignment="Top" Width="8" RadiusX="4" RadiusY="4"/>
+            <TextBlock HorizontalAlignment="Left" FontSize="20" Height="30" Margin="33,7,0,0" TextWrapping="Wrap" Text="SocialMedia" VerticalAlignment="Top" Width="107" Foreground="{StaticResource LightBrush}"/>
+        </Grid>
+
+        <Grid x:Name="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible">
+            <Rectangle x:Name="LoginBlock" HorizontalAlignment="Center" Height="465" VerticalAlignment="Top" Width="379"/>
+            <Grid x:Name="Wellcome_login" HorizontalAlignment="Center" Height="58" Margin="0,72,0,0" VerticalAlignment="Top" Width="207">
+                <TextBlock x:Name="Welcome_Back_" HorizontalAlignment="Center" Height="32" TextWrapping="Wrap" Text="Welcome Back!" VerticalAlignment="Top" Width="162" FontWeight="Bold" FontSize="28" FontFamily="Barlow Condensed ExtraBold" Foreground="{StaticResource DarkBrush}"/>
+                <TextBlock HorizontalAlignment="Center" Height="22" Margin="0,32,0,0" TextWrapping="Wrap" Text="Log in to your existing account" VerticalAlignment="Top" Width="207" FontSize="18" FontWeight="Bold" FontFamily="Barlow Condensed ExtraBold" Foreground="{StaticResource DarkBrush}"/>
+            </Grid>
+            <Grid x:Name="Username" HorizontalAlignment="Left" Height="75" Margin="36,146,0,0" VerticalAlignment="Top">
+                <TextBlock x:Name="UsernameTextBlock" HorizontalAlignment="Left" Height="18" Margin="0,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Foreground="{StaticResource DarkBrush}"><Run FlowDirection="RightToLeft" Language="he-il" Text="U"/><Run Text="sername"/></TextBlock>
+                <TextBox x:Name="EnterUserName" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" TextWrapping="Wrap" Width="300" VerticalContentAlignment="Center" FontSize="28" Background="{x:Null}" BorderBrush="{StaticResource DarkBrush}" Text="Bobi123" Margin="0,21,0,0" TextChanged="EnterUserName_TextChanged"/>
+            </Grid>
+
+            <Grid x:Name="Password" HorizontalAlignment="Left" Height="101" Margin="36,221,0,0" VerticalAlignment="Top">
+                <TextBlock x:Name="PasswordTextBlock" HorizontalAlignment="Left" Height="18" Margin="0,19,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="50" Foreground="{StaticResource DarkBrush}" RenderTransformOrigin="1.74,-0.083"/>
+                <TextBox x:Name="EnterPassword" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" Height="54" Margin="0,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalContentAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}" Text="Bb123123" TextChanged="EnterPassword_TextChanged"/>
+            </Grid>
+
+            <Button x:Name="LogIn" Content="LOG IN" HorizontalAlignment="Center" Height="43" Margin="0,366,0,0" VerticalAlignment="Top" Width="300" FontWeight="Bold" FontSize="18" FontFamily="Barlow Condensed ExtraBold" Click="LogIn_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{StaticResource DarkBrush}"/>
+                        <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource DarkBrush}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource LightBrush}"/>
+                                <Setter Property="Foreground" Value="{StaticResource DarkBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button x:Name="CreateAccount" Content="Create Account" HorizontalAlignment="Center" Height="23" Margin="0,426,0,0" VerticalAlignment="Top" Width="94" FontFamily="Barlow Condensed ExtraBold" FontSize="16" RenderTransformOrigin="0.601,0.087" Click="CreateAccount_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{x:Null}"/>
+                        <Setter Property="Foreground" Value="{StaticResource DarkBrush}"/>
+                        <Setter Property="BorderBrush" Value="{x:Null}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{x:Null}"/>
+                                <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
+                                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBlock x:Name="ErrorMessageLogin" Visibility="Hidden" HorizontalAlignment="Left" Height="16" Margin="107,336,0,0" TextWrapping="Wrap" Text="Error Username or Password !" VerticalAlignment="Top" Width="158" Foreground="{DynamicResource DarkBrush}"/>
+        </Grid>
+
+        <Grid x:Name="Register" HorizontalAlignment="Center" Margin="0,136,0,0" VerticalAlignment="Top" Visibility="Hidden">
+            <Rectangle x:Name="RegisterBlock1" HorizontalAlignment="Center" Height="575" VerticalAlignment="Top" Width="379" Margin="0,-30,0,0"/>
+            <Grid x:Name="h1_Register" HorizontalAlignment="Center" Height="58" Margin="0,-4,0,0" VerticalAlignment="Top" Width="229">
+                <TextBlock x:Name="Create_a_new_account" HorizontalAlignment="Center" Height="32" TextWrapping="Wrap" Text="Create a new account" VerticalAlignment="Top" Width="225" FontWeight="Bold" FontSize="28" FontFamily="Barlow Condensed ExtraBold" Foreground="{StaticResource DarkBrush}"/>
+                <TextBlock x:Name="It_s_quick_and_easy" HorizontalAlignment="Center" Height="22" Margin="0,32,0,0" TextWrapping="Wrap" Text="It’s quick and easy." VerticalAlignment="Top" Width="128" FontSize="18" FontWeight="Bold" FontFamily="Barlow Condensed ExtraBold" Foreground="{StaticResource DarkBrush}"/>
+            </Grid>
+
+            <Grid VerticalAlignment="Top" x:Name="Username_Reg_Copy" Margin="0,59,0,0" Height="75" HorizontalAlignment="Center">
+                <TextBlock Width="54" VerticalAlignment="Top" Text="Username" TextWrapping="Wrap" x:Name="UsernameTextBlock_Reg1" Height="18" HorizontalAlignment="Left" Foreground="{StaticResource DarkBrush}"/>
+                <TextBox Width="300" VerticalAlignment="Top" VerticalContentAlignment="Center" TextWrapping="Wrap" Style="{StaticResource RoundedTextBoxStyle}" x:Name="EnterUsername_Reg" Margin="0,21,0,0" Height="54" HorizontalAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}"/>
+            </Grid>
+            <Grid VerticalAlignment="Top" x:Name="FirstName_Reg_Copy1" Margin="0,157,0,0" Height="75" HorizontalAlignment="Center">
+                <TextBlock Width="58" VerticalAlignment="Top" Text="First Name" TextWrapping="Wrap" x:Name="FirstNameTextBlock_Reg2" Height="18" HorizontalAlignment="Left" Foreground="{StaticResource DarkBrush}"/>
+                <TextBox Width="300" VerticalAlignment="Top" VerticalContentAlignment="Center" TextWrapping="Wrap" Style="{StaticResource RoundedTextBoxStyle}" x:Name="EnterFirstName_Reg" Margin="0,21,0,0" Height="54" HorizontalAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}"/>
+            </Grid>
+
+            <Grid VerticalAlignment="Top" x:Name="LastName_Reg_Copy2" Margin="0,249,0,0" Height="75" HorizontalAlignment="Center">
+                <TextBlock Width="56" VerticalAlignment="Top" Text="Last Name" TextWrapping="Wrap" x:Name="LastNameTextBlock_Reg3" Height="18" HorizontalAlignment="Left" Foreground="{StaticResource DarkBrush}"/>
+                <TextBox Width="300" VerticalAlignment="Top" VerticalContentAlignment="Center" TextWrapping="Wrap" Style="{StaticResource RoundedTextBoxStyle}" x:Name="EnterLastName_Reg" Margin="0,21,0,0" Height="54" HorizontalAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}"/>
+            </Grid>
+            <Grid x:Name="Password_Reg" HorizontalAlignment="Center" Height="75" Margin="0,345,0,0" VerticalAlignment="Top">
+                <TextBlock x:Name="PasswordTextBlock_Reg" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Foreground="{StaticResource DarkBrush}" Text="Password"/>
+                <TextBox x:Name="EnterPassword_Reg" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalContentAlignment="Center" FontSize="28" Background="{x:Null}" BorderBrush="{StaticResource DarkBrush}" Margin="0,21,0,0"/>
+            </Grid>
+            <Button x:Name="Confirm_reg" Content="Sign Up" HorizontalAlignment="Center" Height="43" Margin="0,459,0,0" VerticalAlignment="Top" Width="300" FontWeight="Bold" FontSize="18" FontFamily="Barlow Condensed ExtraBold" Click="Confirm_reg_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{StaticResource DarkBrush}"/>
+                        <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource DarkBrush}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource LightBrush}"/>
+                                <Setter Property="Foreground" Value="{StaticResource DarkBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button x:Name="Already_have_an_account" Content="Already have an account" HorizontalAlignment="Center" Height="23" Margin="0,512,0,0" VerticalAlignment="Top" Width="149" FontFamily="Barlow Condensed ExtraBold" FontSize="16" RenderTransformOrigin="0.601,0.087" Click="Already_have_an_account_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{x:Null}"/>
+                        <Setter Property="Foreground" Value="{StaticResource DarkBrush}"/>
+                        <Setter Property="BorderBrush" Value="{x:Null}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{x:Null}"/>
+                                <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
+                                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+        <Button x:Name="CloseButton" Content="x" HorizontalAlignment="Left" Margin="419,-3,0,0" VerticalAlignment="Top" FontSize="30" Padding="0,0,0,0" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="-0.571,0.6" FontFamily="Barlow Condensed ExtraBold" Click="Button_Click" Width="17">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DarkBrush}"/>
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>
