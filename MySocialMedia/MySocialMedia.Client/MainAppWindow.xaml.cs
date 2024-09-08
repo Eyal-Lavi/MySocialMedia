@@ -39,8 +39,6 @@ namespace MySocialMedia.Client
             userThatLogin_Username.Content = username;
             
             ConnectWebSocketWithToken(ViewModel.CurrentUserName);
-
-            //this.Closing += MainAppWindow_Closing;
         }
         private async void ConnectWebSocketWithToken(string token)
         {
@@ -152,8 +150,10 @@ namespace MySocialMedia.Client
             {
                 MessageBox.Show("Cannot Send the message -" + ex.Message);
             }
-
-            e.Handled = true;
+            if(e != null)// מכיוון שהפעלתי את הפונקציה הזאתי ממקום אחר ושלחתי null
+            {
+                e.Handled = true;
+            }
         }
         private void LogoutButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -197,7 +197,17 @@ namespace MySocialMedia.Client
 
         private void NewContactMessage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
+            var sendMessageToNewContactWindow = new SendMsgToNewContact(_userData ,ViewModel.CurrentUserName);
+            sendMessageToNewContactWindow.Show();
+            this.Close();
+        }
+
+        private void EnterMessageBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                ImageSend_MouseLeftButtonDown(sender , null);
+            }
         }
     }
 }

@@ -59,6 +59,15 @@ namespace MySocialMedia.Logic.Services
             var exists = await _context.users.AnyAsync(x => x.USER_NAME == username);
             return exists;
         }
+        public async Task<int> GetUserId(string username)
+        {
+            var exists = await _context.users.FirstOrDefaultAsync(x => x.USER_NAME == username);
+            if(exists != null)
+            {
+                return exists.ID;
+            }
+            return -1;
+        }
         public async Task<UserDTO> GetUser(string username , string password)
         {
             var result = await _context.users.FirstOrDefaultAsync(x => x.USER_NAME == username && x.PASSWORD == password);

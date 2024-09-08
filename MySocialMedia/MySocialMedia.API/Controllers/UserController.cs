@@ -48,5 +48,17 @@ namespace MySocialMedia.API.Controllers
             }
            return userResponse;
         }
+        [HttpGet]
+        [Route("userid")]
+        public async Task<ActionResult<int>> UserId([FromQuery] string targetUser)
+        {
+            var userId = await _userService.GetUserId(targetUser);
+            
+            if(userId == -1)
+            {
+                return NotFound();
+            }
+            return userId;
+        }
     }
 }

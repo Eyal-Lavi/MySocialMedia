@@ -15,6 +15,6 @@ namespace MySocialMedia.Logic.Services
         Task<bool> UserExists(string username);
         Task<LoginResponseDTO> UserLogin(UserLoginDTO userLoginDTO);
         Task<UserDTO> GetUser(string username , string password);
-
+        Task<int> GetUserId(string username);
     }
 }

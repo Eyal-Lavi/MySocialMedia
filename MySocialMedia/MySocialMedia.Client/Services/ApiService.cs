@@ -105,5 +105,25 @@ namespace MySocialMedia.Client.Services
                 throw new HttpRequestException($"Error: {response.StatusCode}, Details: {errorResponse}");
             }
         }
+        public async Task<int> GetUserIdByUsername(string targetUser)
+        {
+            HttpResponseMessage response = await client.GetAsync($"{_apiURL}/users/userid?targetUser={targetUser}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                return JsonSerializer.Deserialize<int>(responseBody, options);
+            }
+            else
+            {
+                string errorResponse = await response.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"Error: {response.StatusCode}, Details: {errorResponse}");
+            }
+        }
     }
 }
