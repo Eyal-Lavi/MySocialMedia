@@ -10,10 +10,13 @@
         MouseDown="SendNewMsgWin_MouseDown">
     <Window.Resources>
         <!-- Color Resources -->
-        <Color x:Key="MainBackgroundColor">#FF8DECB4</Color>
+        <!--<Color x:Key="MainBackgroundColor">#FF8DECB4</Color>
         <Color x:Key="LightColor">#FFFFF5E0</Color>
-        <Color x:Key="DarkColor">#FF141E46</Color>
-
+        <Color x:Key="DarkColor">#FF141E46</Color>-->
+        <Color x:Key="LightStrongerColor">#3572EF</Color>
+        <Color x:Key="MainBackgroundColor">#1DA1F2</Color>
+        <Color x:Key="LightColor">#F5F8FA</Color>
+        <Color x:Key="DarkColor">#14171A</Color>
         <!-- Brush Resources -->
         <SolidColorBrush x:Key="MainBackgroundBrush" Color="{StaticResource MainBackgroundColor}"/>
         <SolidColorBrush x:Key="LightBrush" Color="{StaticResource LightColor}"/>
@@ -35,18 +38,20 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0,76,0,192">
-        <Rectangle HorizontalAlignment="Center" Height="448" Stroke="Black" VerticalAlignment="Center" Width="450" Fill="{StaticResource MainBackgroundBrush}" RadiusX="10.167" RadiusY="10.167"/>
+        <Rectangle HorizontalAlignment="Center" Height="396" Stroke="Black" VerticalAlignment="Top" Width="438" Fill="{StaticResource MainBackgroundBrush}" RadiusX="10.167" RadiusY="10.167" Margin="0,56,0,0"/>
 
         <Grid x:Name="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" Height="426" Width="372">
-            <TextBlock x:Name="Welcome_Back_" HorizontalAlignment="Center" Height="57" TextWrapping="Wrap" Text="Send Message" VerticalAlignment="Top" Width="270" FontWeight="Bold" FontSize="40" FontFamily="Barlow Condensed ExtraBold" Foreground="{StaticResource DarkBrush}" Margin="0,59,0,0"/>
-            <Grid x:Name="ToGrid" HorizontalAlignment="Left" Height="75" Margin="36,146,0,0" VerticalAlignment="Top">
-                <TextBlock x:Name="ToTextBlock" HorizontalAlignment="Left" Height="18" Margin="0,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="14" Foreground="{StaticResource DarkBrush}"><Run FlowDirection="RightToLeft" Language="he-il" Text="To"/></TextBlock>
-                <TextBox x:Name="ToInput" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" TextWrapping="Wrap" Width="300" VerticalContentAlignment="Center" FontSize="28" Background="{x:Null}" BorderBrush="{StaticResource DarkBrush}" Margin="0,21,0,0" TextChanged="EnterTo_TextChanged"/>
+            <TextBlock x:Name="Welcome_Back_" HorizontalAlignment="Center" Height="57" TextWrapping="Wrap" Text="Send Message" VerticalAlignment="Top" Width="212" FontWeight="Bold" FontSize="40" FontFamily="Barlow Condensed ExtraBold" Foreground="{StaticResource DarkBrush}" Margin="0,75,0,0"/>
+            <Grid x:Name="ToGrid" HorizontalAlignment="Center" Height="98" Margin="0,137,0,0" VerticalAlignment="Top">
+                <TextBlock x:Name="ToTextBlock" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" VerticalAlignment="Top" Width="14" Foreground="{StaticResource DarkBrush}" Margin="0,3,0,0"><Run FlowDirection="RightToLeft" Language="he-il" Text="To"/></TextBlock>
+                <TextBox x:Name="ToInput" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" TextWrapping="Wrap" Height="50" Width="300" VerticalContentAlignment="Center" FontSize="28" Background="{x:Null}" BorderBrush="{StaticResource DarkBrush}" Margin="0,22,0,26" TextChanged="EnterTo_TextChanged"/>
+                <TextBlock Visibility="Hidden" FontWeight="Bold" FontSize="8" x:Name="ToError" HorizontalAlignment="Left" Height="18" Margin="3,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="297" Foreground="{StaticResource DarkBrush}"><Run FlowDirection="RightToLeft" Language="he-il" Text="Some error for To"/></TextBlock>
             </Grid>
 
-            <Grid x:Name="Message" HorizontalAlignment="Left" Height="131" Margin="36,221,0,0" VerticalAlignment="Top">
-                <TextBlock x:Name="MessageTextBlock" HorizontalAlignment="Left" Height="18" Margin="0,19,0,0" TextWrapping="Wrap" Text="Message" VerticalAlignment="Top" Width="50" Foreground="{StaticResource DarkBrush}" RenderTransformOrigin="1.74,-0.083"/>
-                <TextBox x:Name="MessageInput" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" Height="79" Margin="0,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalContentAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}" TextChanged="EnterMessage_TextChanged"/>
+            <Grid x:Name="Message" HorizontalAlignment="Center" Height="141" Margin="0,225,0,0" VerticalAlignment="Top">
+                <TextBlock x:Name="MessageTextBlock" HorizontalAlignment="Left" Height="18" Margin="0,12,0,0" TextWrapping="Wrap" Text="Message" VerticalAlignment="Top" Width="50" Foreground="{StaticResource DarkBrush}" RenderTransformOrigin="1.74,-0.083"/>
+                <TextBox x:Name="MessageInput" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" Height="79" TextWrapping="Wrap" VerticalAlignment="Center" Width="300" VerticalContentAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}" TextChanged="EnterMessage_TextChanged"/>
+                <TextBlock Visibility="Hidden" FontWeight="Bold" FontSize="8" x:Name="MessageError" HorizontalAlignment="Center" Height="13" Margin="0,111,0,0" TextWrapping="Wrap" Text="Some errror for message" VerticalAlignment="Top" Width="300" Foreground="{StaticResource DarkBrush}" RenderTransformOrigin="1.74,-0.083"/>
             </Grid>
 
             <Button x:Name="Send" Content="Send" HorizontalAlignment="Center" Height="43" Margin="0,366,0,0" VerticalAlignment="Top" Width="300" FontWeight="Bold" FontSize="18" FontFamily="Barlow Condensed ExtraBold" Click="Send_Click">

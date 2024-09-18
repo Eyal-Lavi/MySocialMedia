@@ -10,10 +10,12 @@
         MouseDown="MainWindow_MouseDown">
     <Window.Resources>
         <!-- Color Resources -->
-        <Color x:Key="MainBackgroundColor">#FF8DECB4</Color>
+        <!--<Color x:Key="MainBackgroundColor">#FF8DECB4</Color>
         <Color x:Key="LightColor">#FFFFF5E0</Color>
-        <Color x:Key="DarkColor">#FF141E46</Color>
-
+        <Color x:Key="DarkColor">#FF141E46</Color>-->
+        <Color x:Key="MainBackgroundColor">#1DA1F2</Color>
+        <Color x:Key="LightColor">#F5F8FA</Color>
+        <Color x:Key="DarkColor">#14171A</Color>
         <!-- Brush Resources -->
         <SolidColorBrush x:Key="MainBackgroundBrush" Color="{StaticResource MainBackgroundColor}"/>
         <SolidColorBrush x:Key="LightBrush" Color="{StaticResource LightColor}"/>
@@ -119,22 +121,26 @@
                 <TextBlock x:Name="It_s_quick_and_easy" HorizontalAlignment="Center" Height="22" Margin="0,32,0,0" TextWrapping="Wrap" Text="It’s quick and easy." VerticalAlignment="Top" Width="128" FontSize="18" FontWeight="Bold" FontFamily="Barlow Condensed ExtraBold" Foreground="{StaticResource DarkBrush}"/>
             </Grid>
 
-            <Grid VerticalAlignment="Top" x:Name="Username_Reg_Copy" Margin="0,59,0,0" Height="75" HorizontalAlignment="Center">
+            <Grid VerticalAlignment="Top" x:Name="Username_Reg_Copy" Margin="0,59,0,0" Height="93" HorizontalAlignment="Center">
                 <TextBlock Width="54" VerticalAlignment="Top" Text="Username" TextWrapping="Wrap" x:Name="UsernameTextBlock_Reg1" Height="18" HorizontalAlignment="Left" Foreground="{StaticResource DarkBrush}"/>
                 <TextBox Width="300" VerticalAlignment="Top" VerticalContentAlignment="Center" TextWrapping="Wrap" Style="{StaticResource RoundedTextBoxStyle}" x:Name="EnterUsername_Reg" Margin="0,21,0,0" Height="54" HorizontalAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}"/>
+                <TextBlock FontWeight="Bold" Visibility="Hidden" FontSize="9" Width="300" VerticalAlignment="Top" Text="SomeErrorForUsername" TextWrapping="Wrap" x:Name="ErrorUsernameTextBox_Reg1" Height="18" HorizontalAlignment="Center" Foreground="{StaticResource DarkBrush}" Margin="0,75,0,0"/>
             </Grid>
-            <Grid VerticalAlignment="Top" x:Name="FirstName_Reg_Copy1" Margin="0,157,0,0" Height="75" HorizontalAlignment="Center">
+            <Grid VerticalAlignment="Top" x:Name="FirstName_Reg_Copy1" Margin="0,157,0,0" Height="92" HorizontalAlignment="Center">
                 <TextBlock Width="58" VerticalAlignment="Top" Text="First Name" TextWrapping="Wrap" x:Name="FirstNameTextBlock_Reg2" Height="18" HorizontalAlignment="Left" Foreground="{StaticResource DarkBrush}"/>
                 <TextBox Width="300" VerticalAlignment="Top" VerticalContentAlignment="Center" TextWrapping="Wrap" Style="{StaticResource RoundedTextBoxStyle}" x:Name="EnterFirstName_Reg" Margin="0,21,0,0" Height="54" HorizontalAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}"/>
+                <TextBlock FontWeight="Bold" Visibility="Hidden" FontSize="9" Width="300" VerticalAlignment="Top" Text="SomeErrorForFirstName" TextWrapping="Wrap" x:Name="ErrorFirstNameTextBox_Reg1" Height="18" HorizontalAlignment="Center" Foreground="{StaticResource DarkBrush}" Margin="0,75,0,0"/>
             </Grid>
 
-            <Grid VerticalAlignment="Top" x:Name="LastName_Reg_Copy2" Margin="0,249,0,0" Height="75" HorizontalAlignment="Center">
+            <Grid VerticalAlignment="Top" x:Name="LastName_Reg_Copy2" Margin="0,249,0,0" Height="91" HorizontalAlignment="Center">
                 <TextBlock Width="56" VerticalAlignment="Top" Text="Last Name" TextWrapping="Wrap" x:Name="LastNameTextBlock_Reg3" Height="18" HorizontalAlignment="Left" Foreground="{StaticResource DarkBrush}"/>
                 <TextBox Width="300" VerticalAlignment="Top" VerticalContentAlignment="Center" TextWrapping="Wrap" Style="{StaticResource RoundedTextBoxStyle}" x:Name="EnterLastName_Reg" Margin="0,21,0,0" Height="54" HorizontalAlignment="Center" FontSize="28" BorderBrush="{StaticResource DarkBrush}" Background="{x:Null}"/>
+                <TextBlock FontWeight="Bold" Visibility="Hidden" FontSize="9" Width="300" VerticalAlignment="Top" Text="SomeErrorForLastName" TextWrapping="Wrap" x:Name="ErrorLastNameTextBox_Reg1" Height="18" HorizontalAlignment="Center" Foreground="{StaticResource DarkBrush}" Margin="0,75,0,0"/>
             </Grid>
-            <Grid x:Name="Password_Reg" HorizontalAlignment="Center" Height="75" Margin="0,345,0,0" VerticalAlignment="Top">
+            <Grid x:Name="Password_Reg" HorizontalAlignment="Center" Height="92" Margin="0,345,0,0" VerticalAlignment="Top">
                 <TextBlock x:Name="PasswordTextBlock_Reg" HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Foreground="{StaticResource DarkBrush}" Text="Password"/>
                 <TextBox x:Name="EnterPassword_Reg" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Center" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" VerticalContentAlignment="Center" FontSize="28" Background="{x:Null}" BorderBrush="{StaticResource DarkBrush}" Margin="0,21,0,0"/>
+                <TextBlock FontWeight="Bold" Visibility="Hidden" FontSize="9" Width="300" VerticalAlignment="Top" Text="SomeErrorForPassword" TextWrapping="Wrap" x:Name="ErrorPasswordTextBox_Reg1" Height="18" HorizontalAlignment="Center" Foreground="{StaticResource DarkBrush}" Margin="0,75,0,0"/>
             </Grid>
             <Button x:Name="Confirm_reg" Content="Sign Up" HorizontalAlignment="Center" Height="43" Margin="0,459,0,0" VerticalAlignment="Top" Width="300" FontWeight="Bold" FontSize="18" FontFamily="Barlow Condensed ExtraBold" Click="Confirm_reg_Click">
                 <Button.Style>

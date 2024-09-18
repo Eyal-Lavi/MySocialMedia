@@ -21,8 +21,8 @@ namespace MySocialMedia.Client
     public partial class MainWindow : Window
     {
         private readonly ApiService _apiService = new ApiService("https://localhost:7121/api");
-        private bool _loginPremisson = true;
-        private bool _registerPremisson = true;
+        private bool _loginPremisson = true;// מונע ביצוע פועלה פעם לפני שהפעולה הקודמת הסתיימה
+        private bool _registerPremisson = true;// מונע ביצוע פועלה פעם לפני שהפעולה הקודמת הסתיימה
 
         public MainWindow()
         {
@@ -83,7 +83,7 @@ namespace MySocialMedia.Client
             {
                 ErrorMessageLogin.Visibility = Visibility.Visible;
                 _loginPremisson = true;
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
         }
         private void OpenMainAppWindow(LoginResponseDTO userData,string username)
@@ -105,6 +105,7 @@ namespace MySocialMedia.Client
                 return;
             }
             _registerPremisson = false;
+            UpdateErrorsForInputs();//change place 
             var userCreation = new UserCreationDTO
             {
                 UserName = EnterUsername_Reg.Text,
@@ -127,7 +128,8 @@ namespace MySocialMedia.Client
                 if (response)
                 {
                     _registerPremisson = true;
-                    MessageBox.Show("Register Complete");
+                    Login.Visibility = Visibility.Visible;
+                    Register.Visibility = Visibility.Hidden;
                 }
             }
             catch (Exception ex)
@@ -150,6 +152,56 @@ namespace MySocialMedia.Client
             if (ErrorMessageLogin != null)
             {
                 ErrorMessageLogin.Visibility = Visibility.Hidden;
+            }
+        }
+        public void UpdateErrorsForInputs()
+        {
+            var Username = ErrorUsernameTextBox_Reg1;
+            var FirstName = ErrorFirstNameTextBox_Reg1;
+            var LastName = ErrorLastNameTextBox_Reg1;
+            var Password = ErrorPasswordTextBox_Reg1;
+
+
+            var ErrorUserName = ValidationUiService.Username(EnterUsername_Reg.Text);
+            var ErrorFirstName = ValidationUiService.FirstName(EnterFirstName_Reg.Text);
+            var ErrorLastName = ValidationUiService.LastName(EnterLastName_Reg.Text);
+            var ErrorPassword = ValidationUiService.Password(EnterPassword_Reg.Text);
+
+            if (ErrorUserName != null)
+            {
+                Username.Visibility = Visibility.Visible;
+                Username.Text = ErrorUserName;
+            }
+            else
+            {
+                Username.Visibility = Visibility.Hidden;
+            }
+            if (ErrorFirstName != null)
+            {
+                FirstName.Visibility = Visibility.Visible;
+                FirstName.Text = ErrorFirstName;
+            }
+            else
+            {
+                FirstName.Visibility = Visibility.Hidden;
+            }
+            if (ErrorLastName != null)
+            {
+                LastName.Visibility = Visibility.Visible;
+                LastName.Text = ErrorLastName;
+            }
+            else
+            {
+                LastName.Visibility = Visibility.Hidden;
+            }
+            if (ErrorPassword != null)
+            {
+                Password.Visibility = Visibility.Visible;
+                Password.Text = ErrorPassword;
+            }
+            else
+            {
+                LastName.Visibility = Visibility.Hidden;
             }
         }
     }

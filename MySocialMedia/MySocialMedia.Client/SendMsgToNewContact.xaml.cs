@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MySocialMedia.Client
 {
@@ -32,8 +33,6 @@ namespace MySocialMedia.Client
             InitializeComponent();
             _loginData = loginData;
             _username = username;
-            //var userWindow = new MainAppWindow(_loginData,_username);
-            //userWindow.Show();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -62,7 +61,6 @@ namespace MySocialMedia.Client
             string userMessage = MessageInput.Text;
             
             //validation
-
             //sending
             try
             {
@@ -85,7 +83,7 @@ namespace MySocialMedia.Client
         }
         public async Task<int> GetUserId(string username)// not implement
         {
-            if(String.IsNullOrWhiteSpace(username))
+            if(System.String.IsNullOrWhiteSpace(username))
             {
                 throw new ArgumentNullException($"username: {username} .");
             }

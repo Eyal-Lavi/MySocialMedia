@@ -9,10 +9,14 @@
     Background="Transparent" Foreground="{x:Null}" AllowsTransparency="True">
     <Window.Resources>
         <!-- Color Resources -->
-        <Color x:Key="MainBackgroundColor">#FF8DECB4</Color>
-        <Color x:Key="LightColor">#FFFFF5E0</Color>
+        <!--<Color x:Key="MainBackgroundColor">#FF8DECB4</Color>
         <Color x:Key="LightStrongerColor">#41B06E</Color>
-        <Color x:Key="DarkColor">#FF141E46</Color>
+        <Color x:Key="LightColor">#FFFFF5E0</Color>
+        <Color x:Key="DarkColor">#FF141E46</Color>-->
+        <Color x:Key="LightStrongerColor">#3572EF</Color>
+        <Color x:Key="MainBackgroundColor">#1DA1F2</Color>
+        <Color x:Key="LightColor">#F5F8FA</Color>
+        <Color x:Key="DarkColor">#14171A</Color>
         <!-- Color for hover effect -->
 
         <!-- Brush Resources -->
@@ -128,7 +132,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="ChatBlock" Margin="322,105,0,0" Visibility="Visible" Background="{DynamicResource LightBrush}">
+        <Grid x:Name="ChatBlock" Margin="322,105,0,0" Visibility="Hidden" Background="{DynamicResource LightBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
