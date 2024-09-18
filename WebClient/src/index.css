@@ -1,0 +1,9 @@
+:root {
+  --MainBackgroundColor: #FF8DECB4;
+  --LightColor: #FFFFF5E0;
+  --LightStrongerColor: #41B06E;
+  --DarkColor: #FF141E46;
+}
+body{
+  background-color: var(--LightColor);
+}
