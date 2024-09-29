@@ -1,24 +1,18 @@
-import { useContext } from "react";
-import { AuthContext } from "../store/authentication-info-context";
+import { useState } from 'react';
 import styled from 'styled-components'
 
 
 const AuthPage = () => {
-    const authCtx = useContext(AuthContext);
+    const [typeAuth , setTypeAuth] = useState();
     return(
-        <FatherDiv>
-            <div>
-                <input type="text" />
-                
-            </div>
-        </FatherDiv>
+        <AuthPageDiv>
+        </AuthPageDiv>
     )
 }
 
-const FatherDiv = styled.div`
-    background-color: red;
-    width: 100vw;
-    height: 100vh;
+const AuthPageDiv = styled.div`
+    background-color: blue;
+    width: 1000px;
+    height: 500px;
 `;
-
 export default AuthPage;
