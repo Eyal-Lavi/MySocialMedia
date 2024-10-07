@@ -1,13 +1,14 @@
 import './App.css'
-import { AuthContext , _defualtValue} from './store/authentication-info-context'
-// import AuthPage from './Authentication/AuthPage.jsx'
-import { useState } from 'react'
-import styled from 'styled-components';
+import { AuthContext} from './store/authentication-info-context'
+import { useRef, useState } from 'react'
+// import styled from 'styled-components';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import MainData from './MainData.jsx';
+import AuthModal from './Authentication/AuthDialog.jsx';
 
 function App() {
+  const dialog = useRef();
   const [authData , setAuthData] = useState({
     username: undefined,
     password: undefined,
@@ -29,8 +30,8 @@ function App() {
   const ctxValue = {
     auth:{
       get : {
-        username: undefined,
-        password: undefined,
+        username: authData.username,
+        password: authData.password,
       },
       set : {
         username: handleUpdateUsername,
@@ -40,8 +41,11 @@ function App() {
 
   }
   return (
-    <AuthContext.Provider value={ctxValue}>
-        <Header/>
+    
+    <AuthContext.Provider value={ctxValue}>{/*'ctxValue' here for set the real data*/}
+        <AuthModal ref={dialog}/>
+
+        <Header ref = {dialog}/>
 
         <MainData />
         

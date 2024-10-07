@@ -1,6 +1,6 @@
 import { createContext } from "react"
 
-export const _defualtValue = {
+const _defualtValue = {
     auth:{
         get : {
             username: undefined,
@@ -13,5 +13,7 @@ export const _defualtValue = {
     },
 }
 
+{/*'_defualtValue' only for easy using , let you know what you have on the context*/}
 export const AuthContext = createContext(_defualtValue);
+
 

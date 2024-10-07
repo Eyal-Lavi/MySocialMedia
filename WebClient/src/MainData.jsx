@@ -8,6 +8,6 @@ export default function MainData() {
   )
 }
 const StyledMain = styled.main`
-  background-color: black;
+  background-color: bisque;
   height: 90vh;
 `;

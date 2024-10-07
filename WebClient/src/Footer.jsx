@@ -8,6 +8,6 @@ export default function Footer() {
   )
 }
 const StyledFooter = styled.footer`
-    background-color: yellow;
+    background-color: brown;
     height:5vh;
 `;
