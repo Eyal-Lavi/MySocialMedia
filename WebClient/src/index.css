@@ -7,3 +7,8 @@
   height: 100vh;
   background-color: pink;
 }
+.bebas-font {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

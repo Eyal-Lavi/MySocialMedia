@@ -2,6 +2,9 @@ import { useContext, useRef } from "react";
 import { AuthContext } from "../store/authentication-info-context";
 import styled from "styled-components";
 import InputAuth from "../utils/InputAuth";
+import CloseButton from "../utils/ExitButton";
+import SubmitButton from "../utils/SubmitButton";
+import TextButton from "../utils/TextButton";
 const Login = ({updateAuthMode}) => {
     const authCtx = useContext(AuthContext);
     const usernameRef = useRef();
@@ -17,7 +20,7 @@ const Login = ({updateAuthMode}) => {
     };
     return(
         <FormStyled onSubmit={handleSubmit}>
-           <h1>Login</h1>
+           <h1  className="bebas-font">Login</h1>
             <InputAuth
                 ref = {usernameRef}
                 label="Username"
@@ -28,9 +31,9 @@ const Login = ({updateAuthMode}) => {
                 label="Password"
                 type="password"
                />
-           <button type="submit">Send</button>
+           <SubmitButton type="submit">Confirm</SubmitButton>
 
-           <button onClick={handleHaveNotAccount}>Have not account ?</button>
+           <TextButton onClick={handleHaveNotAccount}>Have not account ?</TextButton>
         </FormStyled>
     )
 }
@@ -42,5 +45,7 @@ const FormStyled = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
 `;
 export default Login;

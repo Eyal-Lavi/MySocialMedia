@@ -2,6 +2,7 @@ import {forwardRef, useState} from 'react'
 import styled from 'styled-components';
 import Login from './Login';
 import Register from './Register';
+import CloseButton from '../utils/ExitButton';
 
 const AuthModal = forwardRef(function AuthModal({} , ref){
     const [authMode , setAuthMode] = useState(true);
@@ -9,7 +10,7 @@ const AuthModal = forwardRef(function AuthModal({} , ref){
     return <DialogStyled ref={ref} className="auth-modal">
 
         <form id='defualtForm' method="dialog">
-            <button>X</button>
+            <CloseButton>X</CloseButton>
         </form>
         <div id='mainAuth'>
             {authMode ?
@@ -30,6 +31,7 @@ const DialogStyled = styled.dialog`
     height: 500px;
     border:none;
     border-radius:20px;
+    overflow: hidden;
 
     &::backdrop{
         background-color: rgba(0, 0, 0, 0.7);
@@ -40,34 +42,14 @@ const DialogStyled = styled.dialog`
         display: flex;
         justify-content:end;
         height:44px;
-    }
-    
-    #defualtForm button{
-        background-color: transparent;
-        border: none;
-        border: 2px solid rgba(255, 255, 255, 0.5);
-        border-radius: 24px;
-        font-size: 18px;
-        padding: 5px 8px;
-        color: white;
-        margin:5px;
-    }
-    #defualtForm button:hover{
-        background-color: #006BFF;
-        color: #EDDFE0;
-    }
-    #defualtForm button:hover {
-        background-color: rgba(0, 107, 255, 0.8);
-        box-shadow: 0 0 15px rgba(0, 107, 255, 0.6); 
-    }
-    #defualtForm button:hover::before {
-        opacity: 1;
+        padding-right:4px;
+        padding-top:4px;
     }
 
     & #mainAuth{
         // background-color: coral;
         // height:100%;
-        height:calc(100% - 44px);
+        height:calc(100% - 48px);
 
         display:flex;
         align-items:center;

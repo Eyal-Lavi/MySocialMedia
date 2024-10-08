@@ -2,12 +2,15 @@ import { useContext, useRef } from "react";
 import { AuthContext } from "../store/authentication-info-context";
 import styled from "styled-components";
 import InputAuth from "../utils/InputAuth";
+import TextButton from "../utils/TextButton";
+import SubmitButton from "../utils/SubmitButton";
 const Register = ({updateAuthMode}) => {
     const authCtx = useContext(AuthContext);
     const firstnameRef = useRef();
     const lastnameRef = useRef();
     const usernameRef = useRef();
     const passwordRef = useRef();
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         //some code to complete register
@@ -17,8 +20,8 @@ const Register = ({updateAuthMode}) => {
         updateAuthMode(prevValue => !prevValue);
     };
     return(
-        <FormStyled onSubmit={handleSubmit}>
-        <h1>Register</h1>
+        <FormStyled onSubmit={handleSubmit} >
+        <h1  className="bebas-font">Register</h1>
         <InputAuth
              ref = {firstnameRef}
              label="First Name"
@@ -39,9 +42,9 @@ const Register = ({updateAuthMode}) => {
              label="Password"
              type="password"
             />
-        <button type="submit">Send</button>
+        <SubmitButton type="submit">Send</SubmitButton>
 
-        <button onClick={handleHaveNotAccount}>Have not account ?</button>
+        <TextButton onClick={handleHaveNotAccount}>Arleady have account ?</TextButton>
      </FormStyled>
     )
 }
