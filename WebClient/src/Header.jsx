@@ -29,7 +29,7 @@ const Header = forwardRef(function Header({},ref) {
 export default Header;
 
 const StyledHeader = styled.header`
-    background-color: pink;
+    background-color: red;
     height: 5vh;
     display: flex;
     justify-content: space-between;

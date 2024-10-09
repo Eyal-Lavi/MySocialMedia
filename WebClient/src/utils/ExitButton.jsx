@@ -9,7 +9,7 @@ export default function CloseButton({children , style , ...props}){
 const StyledCloseButton = styled.button`
   & {
     background-color: transparent;
-    border: 2px solid #555555; /* גבול אפור כהה */
+    border: 2px solid #ececec;
     border-radius: 50%;
     color: #555555;
     font-size: 24px;
@@ -26,17 +26,17 @@ const StyledCloseButton = styled.button`
   &:hover {
     background-color: #555555;
     color: white;
-    box-shadow: 0 0 8px rgba(85, 85, 85, 0.6); /* אפקט של צל אפור */
+    box-shadow: 0 0 8px rgba(85, 85, 85, 0.6);
   }
 
   &:active {
-    background-color: #333333; /* כהה יותר בעת לחיצה */
+    background-color: #333333;
     color: white;
-    box-shadow: 0 0 6px rgba(51, 51, 51, 0.6); /* צל עמוק יותר */
+    box-shadow: 0 0 6px rgba(51, 51, 51, 0.6);
   }
 
   &:focus {
     outline: none;
-    // box-shadow: 0 0 0 3px rgba(85, 85, 85, 0.5); /* מסגרת רכה בעת פוקוס */
+    // box-shadow: 0 0 0 3px rgba(85, 85, 85, 0.5);
   }
 `;

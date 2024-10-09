@@ -20,7 +20,7 @@ const Login = ({updateAuthMode}) => {
     };
     return(
         <FormStyled onSubmit={handleSubmit}>
-           <h1  className="bebas-font">Login</h1>
+           <h1 className="bebas-font">Login</h1>
             <InputAuth
                 ref = {usernameRef}
                 label="Username"

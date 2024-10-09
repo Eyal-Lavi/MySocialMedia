@@ -3,7 +3,6 @@ import { AuthContext} from './store/authentication-info-context'
 import { useRef, useState } from 'react'
 // import styled from 'styled-components';
 import Header from './Header.jsx';
-import Footer from './Footer.jsx';
 import MainData from './MainData.jsx';
 import AuthModal from './Authentication/AuthDialog.jsx';
 
@@ -49,7 +48,6 @@ function App() {
 
         <MainData />
         
-        <Footer/>
     </AuthContext.Provider>
   )
 }

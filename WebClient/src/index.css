@@ -5,7 +5,10 @@
 #root{
   width: 100vw;
   height: 100vh;
-  background-color: pink;
+  background-color: greenyellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .bebas-font {
   font-family: "Bebas Neue", sans-serif;
