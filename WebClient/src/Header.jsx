@@ -29,13 +29,17 @@ const Header = forwardRef(function Header({},ref) {
 export default Header;
 
 const StyledHeader = styled.header`
-    background-color: red;
+    // background-color: #222831;
+    background: linear-gradient(to right, rgba(0,172,181,1) 0%, rgba(117,189,209,1) 41%, rgba(34,40,49,1) 100%);
+    // background: linear-gradient(to right, rgba(0,172,181,1) 0%, rgba(117,189,209,1) 19%, rgba(34,40,49,1) 69%);
     height: 5vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding:5px 20px;
-
+    & h1{
+      color: #EEEEEE;
+    }
     & button{
         height: 35px;
     }

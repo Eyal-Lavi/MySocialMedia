@@ -10,7 +10,7 @@ export default function SubmitButton({children , ...props }) {
 
 const StyledButton = styled.button`
   & {
-    background-color: #006BFF;
+    background-color: #17cbd4;
     border: none;
     border-radius: 24px;
     font-size: 18px;
@@ -23,17 +23,17 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: #0056cc;
+    background-color: #00ADB5;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   }
 
   &:active {
-    background-color: #0041a3;
+    background-color: #039da5;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 107, 255, 0.5); 
+    box-shadow: 0 0 0 3px rgba(3, 157, 165, 0.5); 
   }
 `;

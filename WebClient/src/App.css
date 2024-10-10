@@ -3,8 +3,9 @@
     justify-content: start;
     background-color: aliceblue;
     max-width: 150px;
-    border-bottom:2px solid #004ebb;
+    border-bottom:2px solid #039da5;
     padding-right: 5px;
     text-align: center;
     align-items: center;
+    z-index: 1;
 }

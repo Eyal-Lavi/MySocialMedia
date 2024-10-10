@@ -19,7 +19,7 @@ export default function LoginButton({onLoginClick , onLogoutClick}){
 }
 
 const StyledLoginButton = styled.button`
-  background-color: #006BFF;
+  background-color: #17cbd4;
   border: none;
   border-radius: 30px;
   font-size: 20px;
@@ -33,19 +33,19 @@ const StyledLoginButton = styled.button`
   justify-content: center;
   
   &:hover {
-    background-color: #035bd6;
+    background-color: #00ADB5;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     transform: translateY(-3px);
   }
 
   &:active {
-    background-color: #004ebb;
+    background-color: #039da5;
     transform: translateY(0); 
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 107, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(3, 157, 165, 0.5);
   }
 
   /* שינוי צבע הכפתור ל-logout */

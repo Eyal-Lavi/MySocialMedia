@@ -10,6 +10,7 @@ export default function MainData() {
   )
 }
 const StyledMain = styled.main`
-  background-color: bisque;
+  // background-color: bisque;
+  background-color: #EEEEEE;
   height: 95vh;
 `;
