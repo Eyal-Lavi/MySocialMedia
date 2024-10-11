@@ -17,7 +17,8 @@ const Li = styled.li`
     height: 60px;
     border-bottom: 1px solid #e0e0e0;
     transition: background-color 0.3s ease;
-
+    display:flex;
+    
     &:hover {
         background-color: #f1f1f1; /* שינוי צבע ברקע בעת מעבר עכבר */
     }
@@ -53,41 +54,3 @@ const Li = styled.li`
         font-weight: bold;
     }
 `;
-
-// import styled from "styled-components"
-// import UserIcon from '/UserIcon.png';
-
-// export default function Contact(){
-//     return(
-//         <Li>
-//             <button>
-//                 <img src={UserIcon} alt="(user img)"/>
-//                 asdads
-//             </button>
-//         </Li>
-//     )
-// }
-// const Li = styled.li`
-//     background-color:pink;
-//     height: 50px;
-//     border-bottom:1px solid black;
-    
-//     & button{
-//         display:flex;
-//         align-items:center;
-//         justify-content: start;
-//         width:100%;
-//         height:100%;
-//         background-color:transparent;
-//         // outline:none;
-//         border:none;
-//         margin-bottom:2px;
-//     }
-//     & img{
-//         width:40px;
-//         margin-left: 25px;
-//         margin-right: 15px;
-//     }
-
-    
-// `;

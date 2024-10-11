@@ -27,7 +27,7 @@ const StyledLoginButton = styled.button`
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-
+  height:20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,5 +63,8 @@ const StyledLoginButton = styled.button`
           box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.5); /* מסגרת אדומה רכה בעת פוקוס */
         }
     `
+    }
+    @media (min-width: 1024px){
+      height:35px;
     }
 `;

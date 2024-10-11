@@ -40,7 +40,5 @@ const StyledHeader = styled.header`
     & h1{
       color: #EEEEEE;
     }
-    & button{
-        height: 35px;
-    }
+
 `;
